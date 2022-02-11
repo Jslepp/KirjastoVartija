@@ -1,45 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+[RequireComponent(typeof(CharacterController))]
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
+    public float speed = 7.5f;
+    public float jumpSpeed = 8.0f;
+    public float gravity = 20.0f;
+    public Camera playerCamera;
+    public float lookSpeed = 2.0f;
+    public float lookXLimit = 45.0f;
 
-    public float speed = 12f;
-    public float gravity = -9.81f;
-    public float jumpHeight = 3f;
+    CharacterController characterController;
+    [HideInInspector]
+    public Vector3 moveDirection = Vector3.zero;
+    Vector2 rotation = Vector2.zero;
 
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundmask;
+    [HideInInspector]
+    public bool canMove = true;
 
-    Vector3 velocity;
-    bool isGrounded;
-    // Update is called once per frame
+    void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+        rotation.y = transform.eulerAngles.y;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundmask);
-
-        if(isGrounded && velocity.y < 0)
+        if (characterController.isGrounded)
         {
-            velocity.y = -2f;
+            // We are grounded, so recalculate move direction based on axes
+            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 right = transform.TransformDirection(Vector3.right);
+            float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
+            float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
+            moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+
+            if (Input.GetButton("Jump") && canMove)
+            {
+                moveDirection.y = jumpSpeed;
+            }
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
+        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
+        // as an acceleration (ms^-2)
+        moveDirection.y -= gravity * Time.deltaTime;
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        // Move the controller
+        characterController.Move(moveDirection * Time.deltaTime);
 
-        controller.Move(move * speed * Time.deltaTime);
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        // Player and Camera rotation
+        if (canMove)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
+            rotation.y += Input.GetAxis("Mouse X") * lookSpeed;
+            rotation.x += -Input.GetAxis("Mouse Y") * lookSpeed;
+            rotation.x = Mathf.Clamp(rotation.x, -lookXLimit, lookXLimit);
+            playerCamera.transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
+            transform.eulerAngles = new Vector2(0, rotation.y);
         }
-
-        velocity.y += gravity * Time.deltaTime;
-
-        controller.Move(velocity * Time.deltaTime);
     }
 }
