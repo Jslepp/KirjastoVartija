@@ -18,25 +18,25 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 2
+    value: 5
   threshold:
     overrideState: 1
     value: 1
   softKnee:
     overrideState: 1
-    value: 0.5
+    value: 1
   clamp:
     overrideState: 1
     value: 65472
   diffusion:
     overrideState: 1
-    value: 7
+    value: 10
   anamorphicRatio:
     overrideState: 1
     value: 0
   color:
     overrideState: 1
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value: {r: 0.6037736, g: 0.55835396, b: 0.3503026, a: 1}
   fastMode:
     overrideState: 1
     value: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   settings:
   - {fileID: 1386931937422353450}
   - {fileID: 6733994529899306382}
-  - {fileID: 1981152516882124273}
+  - {fileID: 5596466574033095508}
   - {fileID: 6264157851646763966}
   - {fileID: -1154670715421370565}
   - {fileID: 3709419776361712821}
@@ -86,15 +86,15 @@ MonoBehaviour:
     value: 1
   mode:
     overrideState: 1
-    value: 1
+    value: 0
   intensity:
     overrideState: 1
-    value: 0.61
+    value: 2.75
   color:
     overrideState: 1
-    value: {r: 0.9622642, g: 0.9503626, b: 0.51290494, a: 1}
+    value: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   ambientOnly:
-    overrideState: 1
+    overrideState: 0
     value: 1
   noiseFilterTolerance:
     overrideState: 1
@@ -107,17 +107,79 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 1
-    value: 3.26
+    value: 2.38
   directLightingStrength:
     overrideState: 1
     value: 0
   radius:
     overrideState: 1
-    value: 0.25
+    value: 0.2
   quality:
     overrideState: 1
-    value: 2
---- !u!114 &1981152516882124273
+    value: 3
+--- !u!114 &2620793139903715070
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  focusDistance:
+    overrideState: 1
+    value: 1.28
+  aperture:
+    overrideState: 1
+    value: 16
+  focalLength:
+    overrideState: 1
+    value: 47
+  kernelSize:
+    overrideState: 1
+    value: 0
+--- !u!114 &3709419776361712821
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: 
+  active: 0
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 0
+  intensityX:
+    overrideState: 1
+    value: 1
+  intensityY:
+    overrideState: 1
+    value: 1
+  centerX:
+    overrideState: 1
+    value: 0
+  centerY:
+    overrideState: 1
+    value: 0
+  scale:
+    overrideState: 1
+    value: 1
+--- !u!114 &5596466574033095508
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,13 +238,13 @@ MonoBehaviour:
     value: 0
   colorFilter:
     overrideState: 1
-    value: {r: 0.9150943, g: 0.8687719, b: 0.64315593, a: 1}
+    value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
     overrideState: 1
     value: 0
   saturation:
     overrideState: 1
-    value: 3.29
+    value: 0
   brightness:
     overrideState: 1
     value: 0
@@ -191,13 +253,13 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 1
-    value: 8.2
+    value: 3
   mixerRedOutRedIn:
     overrideState: 1
-    value: 118
+    value: 100
   mixerRedOutGreenIn:
     overrideState: 1
-    value: -20
+    value: 0
   mixerRedOutBlueIn:
     overrideState: 1
     value: 0
@@ -224,10 +286,10 @@ MonoBehaviour:
     value: {x: 1, y: 1, z: 1, w: 0}
   gamma:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: -0.030257184}
+    value: {x: 1, y: 1, z: 1, w: -0.11214953}
   gain:
     overrideState: 1
-    value: {x: 1, y: 1, z: 1, w: 0.03025718}
+    value: {x: 1, y: 1, z: 1, w: -0.35514018}
   masterCurve:
     overrideState: 1
     value:
@@ -1428,68 +1490,6 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
---- !u!114 &2620793139903715070
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
-  m_Name: DepthOfField
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  focusDistance:
-    overrideState: 1
-    value: 10
-  aperture:
-    overrideState: 1
-    value: 11.5
-  focalLength:
-    overrideState: 1
-    value: 50
-  kernelSize:
-    overrideState: 1
-    value: 1
---- !u!114 &3709419776361712821
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b77c5407dc277943b591ade9e6b18c5, type: 3}
-  m_Name: LensDistortion
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  intensity:
-    overrideState: 1
-    value: 0
-  intensityX:
-    overrideState: 1
-    value: 1
-  intensityY:
-    overrideState: 1
-    value: 1
-  centerX:
-    overrideState: 1
-    value: 0
-  centerY:
-    overrideState: 1
-    value: 0
-  scale:
-    overrideState: 1
-    value: 1
 --- !u!114 &6222729957633640865
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1512,7 +1512,7 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.728
+    value: 0.432
   fastMode:
     overrideState: 1
     value: 0
@@ -1537,7 +1537,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.307
+    value: 0.109
   size:
     overrideState: 1
     value: 2.45
