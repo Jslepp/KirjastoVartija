@@ -10,11 +10,18 @@ public class ObjectiveTrigger : MonoBehaviour
     //Upon collision with another GameObject, this GameObject will reverse direction
     private void OnTriggerEnter(Collider other)
     {
-        anim.Play("TextFadeOut");
-        gameobject.SetActive(true);
+        teksti.text = "Press space to turn on the lights";
     }
     private void OnTriggerExit(Collider other) 
     {
         
+    }
+
+    private void OnTriggerStay(Collider other) 
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log("Space");
+            gameobject.SetActive(!gameobject.activeSelf);
+        }
     }
 }
