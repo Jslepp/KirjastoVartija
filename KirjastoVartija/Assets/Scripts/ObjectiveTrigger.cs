@@ -10,7 +10,7 @@ public class ObjectiveTrigger : MonoBehaviour
     //Upon collision with another GameObject, this GameObject will reverse direction
     private void OnTriggerEnter(Collider other)
     {
-        teksti.text = "Press space to turn on the lights";
+        teksti.text = "Press [Space] to turn on/off the lights";
     }
     private void OnTriggerExit(Collider other) 
     {
