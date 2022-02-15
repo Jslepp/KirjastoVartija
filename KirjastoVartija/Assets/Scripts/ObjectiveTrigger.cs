@@ -6,7 +6,6 @@ public class ObjectiveTrigger : MonoBehaviour
     public Text teksti;
     public Animator anim;
     public bool OnTriggerstay = false; 
-    public GameObject valot;
     public GameObject[] kamerat;
     private int i = 0;
 
@@ -19,7 +18,7 @@ public class ObjectiveTrigger : MonoBehaviour
     {
         OnTriggerstay = true;
         anim.Play("TextFadeOut");
-        teksti.text = "Press [Space] to turn on/off the lights";
+        teksti.text = "Press E to use the cameras";
         anim.Play("TextFadeIn");
     }
     private void OnTriggerExit(Collider other) 
@@ -38,11 +37,6 @@ public class ObjectiveTrigger : MonoBehaviour
 
     void Update() 
     {
-        
-        if (OnTriggerstay && Input.GetKeyDown(KeyCode.Space)) {
-            valot.SetActive(!valot.activeSelf);
-        }
-
         if (OnTriggerstay && Input.GetKeyDown(KeyCode.E)) {
             if (i != 0) {
                 kamerat[i-1].SetActive(false);

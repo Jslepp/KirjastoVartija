@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
 
+    public GameObject valo;
     CharacterController characterController;
     [HideInInspector]
     public Vector3 moveDirection = Vector3.zero;
@@ -41,6 +42,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 moveDirection.y = jumpSpeed;
             }
+            if (Input.GetButton("Fire1")) {
+                VaihdaTaskulamppu(valo);
+            }
         }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
@@ -60,5 +64,8 @@ public class PlayerMovement : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
             transform.eulerAngles = new Vector2(0, rotation.y);
         }
+    }
+    public void VaihdaTaskulamppu(GameObject valo) {
+        valo.SetActive(!valo.activeSelf);
     }
 }
