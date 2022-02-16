@@ -6,6 +6,9 @@ public class ValoKatkasija : MonoBehaviour
     public Text teksti;
     public Animator anim;
     public bool OnTriggerstay = false; 
+
+    public GameObject katkasinylhäällä;
+    public GameObject katkasinalhaalla;
     public GameObject valot;
 
 
@@ -28,6 +31,14 @@ public class ValoKatkasija : MonoBehaviour
         
         if (OnTriggerstay && Input.GetKeyDown(KeyCode.E)) {
             valot.SetActive(!valot.activeSelf);
+            if (valot.activeSelf) {
+                katkasinylhäällä.SetActive(false);
+                katkasinalhaalla.SetActive(true);
+            }
+            if (valot.activeSelf == false) {
+                katkasinylhäällä.SetActive(true);
+                katkasinalhaalla.SetActive(false);
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KorjaaKameraTrigger : MonoBehaviour
 {
+    public GameObject parent;
     private bool KameraKorjattu = false;
     private bool sisässä = false;
     private void OnTriggerEnter(Collider other) {
@@ -17,6 +18,7 @@ public class KorjaaKameraTrigger : MonoBehaviour
     void Update() {
         if (sisässä && Input.GetKeyDown(KeyCode.E)) {
             KameraKorjattu = true;
+            parent.SetActive(false);
         }
     }
 }

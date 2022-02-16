@@ -17,6 +17,7 @@ public class LukitseUlkoOvi : MonoBehaviour
     void Update() {
         if (sisässä && Input.GetKeyDown(KeyCode.E)) {
             Ovilukittu = true;
+            this.gameObject.SetActive(false);
         }
     }
 }

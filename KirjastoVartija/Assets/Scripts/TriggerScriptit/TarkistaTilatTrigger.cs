@@ -7,5 +7,6 @@ public class TarkistaTilatTrigger : MonoBehaviour
     private bool hoidettu = false;
     private void OnTriggerEnter(Collider other) {
         hoidettu = true;
+        this.gameObject.SetActive(false);
     }
 }

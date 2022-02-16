@@ -3,6 +3,10 @@ using UnityEngine.UI;
 
 public class ObjectiveTrigger : MonoBehaviour
 {
+    public GameObject korjaaKamera;
+    private bool valotvälkkynyt = false;
+    private int kameratkatsottu;
+    private bool kamerakorjattu;
     public Text teksti;
     public Animator anim;
     public bool OnTriggerstay = false; 
@@ -25,7 +29,7 @@ public class ObjectiveTrigger : MonoBehaviour
     {
         OnTriggerstay = false;
         if (i != 0) {
-            kamerat[i-1].SetActive(!kamerat[i-1].activeSelf);
+            kamerat[i-1].SetActive(false);
             Näyttö.GetComponent<MeshRenderer>().material = material[4];
         }
         if (i == 0) {
@@ -36,8 +40,59 @@ public class ObjectiveTrigger : MonoBehaviour
 
 
     void Update() 
-    {
-        if (OnTriggerstay && Input.GetKeyDown(KeyCode.E)) {
+    {    
+
+        if (valotvälkkynyt == true && korjaaKamera.activeSelf == false && kamerakorjattu == false) {
+            kamerakorjattu = true;
+            Debug.Log("Kamerakorjattu");
+        }
+
+        if (OnTriggerstay && Input.GetKeyDown(KeyCode.E) && valotvälkkynyt == false && kameratkatsottu <= 4) {
+            if (i != 0) {
+                kamerat[i-1].SetActive(false);
+            }
+            if (i == 0) {
+                kamerat[3].SetActive(false);
+            }
+            kamerat[i].SetActive(!kamerat[i].activeSelf);
+            Näyttö.GetComponent<MeshRenderer>().material = material[i];
+            i = i + 1;
+            if (i == 4) {
+                i = 0;
+            }
+            kameratkatsottu = kameratkatsottu + 1;
+        }
+
+        if (kameratkatsottu == 4 && valotvälkkynyt == false) {
+            Debug.Log("Valo välkky");
+            korjaaKamera.SetActive(true);
+            // TODO valotvälkkyy metodi
+            valotvälkkynyt = true;
+        }
+
+        if (OnTriggerstay && Input.GetKeyDown(KeyCode.E) && valotvälkkynyt == true && kamerakorjattu == false) {
+            Debug.Log("Kamera ei toimi");
+            if (i != 0) {
+                kamerat[i-1].SetActive(false);
+            }
+            if (i == 0) {
+                kamerat[3].SetActive(false);
+            }
+            if (i == 2) {
+                Näyttö.GetComponent<MeshRenderer>().material = material[4];
+            }
+            if (i != 2) {
+                kamerat[i].SetActive(!kamerat[i].activeSelf);
+                Näyttö.GetComponent<MeshRenderer>().material = material[i];
+            }
+            i = i + 1;
+            if (i == 4) {
+                i = 0;
+            }
+        }
+        
+        if (OnTriggerstay && Input.GetKeyDown(KeyCode.E) && valotvälkkynyt == true && kamerakorjattu == true) {
+            Debug.Log("Kamera toimii");
             if (i != 0) {
                 kamerat[i-1].SetActive(false);
             }
@@ -51,5 +106,6 @@ public class ObjectiveTrigger : MonoBehaviour
                 i = 0;
             }
         }
+        
     }
 }
